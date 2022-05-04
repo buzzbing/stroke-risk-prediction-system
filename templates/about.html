@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabin&family=EB+Garamond&display=swap" rel="stylesheet">
+    <title>Stroke Away| About Us</title>
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/newlogo.jpg' %}">
+
+</head>
+<body>
+    <div class="navCont">
+       <div class="brandName">
+        {% load static %}
+           <img src="{% static 'images/newlogo.jpg' %}" alt="logo">
+           <div class="text">Stroke Away</div>
+        </div>
+        <div class="navList">
+          <a href="{% url 'myapp:home' %}"> Home</a>
+          <!-- <a href="login.html">Login</a>-->
+          <a href="{% url 'myapp:about' %}">About Us</a>
+          <a href="{% url 'myapp:loginpage' %}">Logout</a>
+       </div>
+    </div>
+ 
+           
+                <div class="about"> Stroke Away is an interface for  “Obesity Screening and Stroke Risk Prediction System”, a system that diagnoses obesity, predicts the risk of stroke in a person and displays the result. Based on our hardware system and inputs provided, patients will be able to find out whether they're obese or not and register for Stroke risk prediction if they wish. Patients are also able to retrieve their medical data with the assistance of our nurse. By the means of our efficient system, we aim to bring awareness about their health conditions to our patients. 
+                    <br>
+               </div>
+               <footer class="foot"> For further information Contact Us  <br> tha075bei026@tcioe.edu.np <br> tha075bei027@tcioe.edu.np <br> tha075bei029@tcioe.edu.np</footer>
+        
+    
+    
+</body>
+</html>

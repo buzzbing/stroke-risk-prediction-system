@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin&family=EB+Garamond&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <script src="https://use.fontawesome.com/b4ca34aaa2.js"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    <title>Login | Stroke Away</title>
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/newlogo.jpg' %}">
+</head>
+<body>
+
+    <div class="adminCont">
+        <div class="brandName"  style=" margin-right:auto;margin-left:auto;padding-left:30%;margin-top:30px;">
+            {% load static %}
+            <img src="{% static 'images/newlogo.jpg' %}" alt="logo">
+            <div class="text" style="margin-left: 10px;">Stroke Away</div>
+         </div>
+        <div class="adminCont1">
+            <style>
+                h3{
+                    color:red;
+                }
+            </style>
+            {% for message in messages %}
+            <h3>{{message}}</h3>
+            {% endfor %}
+            <form method = "POST" action = "{% url 'myapp:loginpage' %}">
+                {% csrf_token %}
+                <input type="name" name="username" required placeholder="Username"><br>
+           <!-- <input type="text" name="email"  required placeholder="Email"><br> -->
+           <input  type="password" name="password" required class="id_password"  placeholder="Password"><br>
+           <!-- <i class="far fa-eye togglePassword" style="margin-left: -24px; cursor: pointer;"></i><br> -->
+           <button>Login</button>
+                 <div class="text">Don't have an account? 
+                     <a href="{% url 'myapp:signup' %}">Sign Up</a> </div> 
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

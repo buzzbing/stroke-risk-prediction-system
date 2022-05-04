@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin&family=EB+Garamond&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Prediction Model | Stroke Away</title>
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/newlogo.jpg' %}">
+</head>
+
+<body>
+    <div class="navCont">
+        <div class="brandName">
+            {% load static %}
+            <img src="{% static 'images/newlogo.jpg' %}" alt="logo">
+            <div class="text">Stroke Away</div>
+        </div>
+        <div class="navList">
+            <a href="{% url 'myapp:home' %}"> Home</a>
+            <!-- <a href="login.html">Login</a>-->
+            <a href="{% url 'myapp:about' %}">About Us</a>
+            <a href="{% url 'myapp:loginpage' %}">Logout</a>
+        </div>
+    </div>
+    <div class="adminCont" >
+       
+        <form method="POST" action="{% url 'myapp:predictionform' %}" class="regPatCont" style="padding:10px;top:4%">
+            {% csrf_token %}
+            <!-- <input type="name" name="name" required placeholder="Full Name"><br> -->
+            <input list="patients" name="patname" placeholder="Patient Name">
+            <datalist id="patients">
+                {% for patient in patients %}
+                   <option value="{{patient.name}}">{{patient.name}}</option>
+
+                {% endfor %}
+            </datalist><br>
+            <input list="gender" name="gender" placeholder="Gender">
+            <datalist id="gender">
+                <option value="Male">
+                <option value="Female">
+               
+                
+            </datalist><br>
+            <input type="number" name="age" required placeholder="Age"><br>
+            <input list="hypertension" name="hypertension" placeholder="Do you suffer from hypertension?">
+            <datalist id="hypertension">
+                <option value="Yes">
+                <option value="No">
+            </datalist><br>
+            <input list="heartdisease" name="heart_disease" placeholder="Do you have any heartdiseases?">
+            <datalist id="heartdisease">
+                <option value="Yes">
+                <option value="No">
+            </datalist><br>
+            <input list="marriage" name="ever_married" placeholder="Ever married?">
+            <datalist id="marriage">
+                <option value="Yes">
+                <option value="No">
+            </datalist><br>
+            <input list="worktype" name="work_type" placeholder="Work Type">
+            <datalist id="worktype">
+                <option value="Private">
+                <option value="Government Job">
+                <option value="Self-employed">
+                <option value="children">
+                <option value="Never_worked">    
+            </datalist><br>
+            <input list="residence" name="Residence_type" placeholder="Residence">
+            <datalist id="residence">
+                <option value="Rural">
+                <option value="Urban">
+            </datalist><br>
+            <input  type="number"
+            step="0.01"
+             name="avg_glucose_level" placeholder="Average glucose level"><br>
+            <input list="smoking_status" name="smoking_status" placeholder="Smoking Status">
+            <datalist id="smoking_status">
+                <option value="formerly smoked">
+                <option value="never smoked">
+                <option value="smokes">
+                <option value="Unknown">    
+
+            </datalist><br>
+            <input type="number" name="heartrate" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="3" placeholder="Heart Rate"><br>
+            <button>Submit </button>
+           
+        </form>
+
+    </div>
+    </div>
+</body>
+
+</html>

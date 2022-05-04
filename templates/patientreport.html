@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabin&family=EB+Garamond&display=swap" rel="stylesheet">
+    <title>Stroke Away| Results</title>
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/newlogo.jpg' %}">
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/newlogo.jpg' %}">
+</head>
+<body>
+    <div class="navCont">
+       <div class="brandName">
+        {% load static %}
+           <img src="{% static 'images/newlogo.jpg' %}" alt="logo">
+           <div class="text">Stroke Away</div>
+        </div>
+        <div class="navList">
+          <a href="{% url 'myapp:home' %}"> Home</a>
+          <!-- <a href="login.html">Login</a>-->
+          <a href="{% url 'myapp:about' %}">About Us</a>
+          <a href="{% url 'myapp:loginpage' %}">Logout</a>
+       </div>
+    </div>
+     
+        <div class="adminCont">
+         
+            <div class="regPatCont" style="top:17%;padding: 15px 5px 15px 5px;">
+                
+                <form method = "POST" action = "{% url 'myapp:patientreport' %}">
+                    {% csrf_token %}
+                    <!-- <input type="name" name="name" required  placeholder="Full Name"><br> -->
+                    <input list="patients" name="patname" placeholder="Patient Name">
+                     <datalist id="patients">
+                {% for patient in patients %}
+                   <option value="{{patient.id}}">{{patient.name}}</option>
+
+                {% endfor %}
+            </datalist><br>
+                    <input type="number" name="contact" maxlenghth="10" required  placeholder="Contact number"><br>
+                    
+                    <button>Search</button>
+                </form>
+                
+            </div>
+            
+            <div style="margin-top: 50px;
+            color: #993358;
+            font-size: 27px;text-align: center;">{% for message in messages %}
+                <p>{{message}}</p>
+                {% endfor %}</div>
+            
+            
+            <div class="regPatCont" style="left:40%;top:45%; font-size: 22px; width: auto; height: auto;" >
+                <!-- {% for message in messages %}
+                <p>{{message}}</p>
+                {% endfor %} -->
+             {{pats_pat}}<br>{{pats_pat1}}<br>{{sens_pat}}<br>{{sens_pat1}}<br>{{f_pat}}<br>{{pred_pat}}<br>{{pred_pat1}}<br>{{pred_pat2}}<br>
+            </div>
+        </div>
+   
+    
+</body>
+</html>
